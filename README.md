@@ -9,18 +9,18 @@
 - `cilium/v1.19`：保留最新的 Cilium `1.19.x`
 
 如果需要安装特定的 Cilium `x.y` 系列，请直接 clone 对应分支。比如安装
-最新的 Cilium `1.18.x`：
-
-```bash
-git clone -b cilium/v1.18 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.18
-cd deployCilium-v1.18/cilium
-```
-
-如果需要安装 Cilium `1.19.x`，把分支名替换为 `cilium/v1.19`：
+最新的 Cilium `1.19.x`：
 
 ```bash
 git clone -b cilium/v1.19 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.19
 cd deployCilium-v1.19/cilium
+```
+
+如果需要安装 Cilium `1.18.x`，把分支名替换为 `cilium/v1.18`：
+
+```bash
+git clone -b cilium/v1.18 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.18
+cd deployCilium-v1.18/cilium
 ```
 
 可以通过如下命令查看当前可用的 Cilium 安装分支：
@@ -96,15 +96,15 @@ cilium/
 
 1. clone 对应的 `cilium/vX.Y` 分支到 master 节点
 
-    以安装最新的 Cilium `1.18.x` 为例：
+    以安装最新的 Cilium `1.19.x` 为例：
 
     ```bash
-    git clone -b cilium/v1.18 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.18
-    cd deployCilium-v1.18/cilium
+    git clone -b cilium/v1.19 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.19
+    cd deployCilium-v1.19/cilium
     chmod +x ./setup.sh ./showStatus.sh
     ```
 
-    如需安装其它 `x.y` 系列，把分支名替换为 `cilium/v1.19` 等。可用分支可通过如下命令查看：
+    如需安装其它 `x.y` 系列，把分支名替换为 `cilium/v1.18` 等。可用分支可通过如下命令查看：
 
     ```bash
     git ls-remote --heads https://github.com/spidernet-io/deployCilium.git 'cilium/v*'
@@ -187,8 +187,8 @@ cilium/
 在准备机上 clone 对应的 `cilium/vX.Y` 分支（与离线集群实际安装时使用的分支保持一致）：
 
 ```bash
-git clone -b cilium/v1.18 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.18
-cd deployCilium-v1.18/cilium
+git clone -b cilium/v1.19 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.19
+cd deployCilium-v1.19/cilium
 chmod +x ./setup.sh
 ```
 
@@ -259,8 +259,8 @@ done < images.txt
 在离线集群的 master 节点上 clone 同一个 `cilium/vX.Y` 分支：
 
 ```bash
-git clone -b cilium/v1.18 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.18
-cd deployCilium-v1.18/cilium
+git clone -b cilium/v1.19 --single-branch https://github.com/spidernet-io/deployCilium.git deployCilium-v1.19
+cd deployCilium-v1.19/cilium
 chmod +x ./setup.sh ./showStatus.sh
 ```
 
