@@ -219,6 +219,22 @@ run_single_agent() {
     esac
 }
 
+print_ai_output() {
+    local agent="$1"
+
+    if [[ ! -s "${ai_output}" ]]; then
+        echo "${agent} produced no CLI output." >&2
+        return 0
+    fi
+
+    echo "::group::${agent} CLI output" >&2
+    sed -n '1,240p' "${ai_output}" >&2
+    if [[ "$(wc -l < "${ai_output}")" -gt 240 ]]; then
+        echo "... output truncated; showing first 240 lines" >&2
+    fi
+    echo "::endgroup::" >&2
+}
+
 # Validate that the PR body contains every required section and that the
 # working tree reflects a successful upgrade. Returns 0 on success.
 validate_upgrade() {
@@ -284,6 +300,7 @@ for agent in "${agent_order[@]}"; do
         break
     fi
 
+    print_ai_output "${agent}"
     echo "${agent} failed; resetting worktree before next attempt." >&2
     reset_worktree
 done

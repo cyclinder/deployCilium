@@ -63,12 +63,19 @@ jobs:
           fi
 
           latest_minor=$(printf '%s\n' "${stable_minors[@]}" | sort -V | tail -n 1)
+          echo "Stable upstream Cilium minors: $(printf '%s ' "${stable_minors[@]}")"
+          echo "Latest upstream Cilium minor: ${latest_minor}"
 
           mapfile -t branches < <(
             git ls-remote --heads origin 'cilium/v*' |
               sed 's#.*refs/heads/##' |
               sort -V
           )
+          if [[ ${#branches[@]} -gt 0 ]]; then
+            echo "Existing maintenance branches: $(printf '%s ' "${branches[@]}")"
+          else
+            echo "Existing maintenance branches: none"
+          fi
 
           branch_exists() {
             local wanted="$1"
