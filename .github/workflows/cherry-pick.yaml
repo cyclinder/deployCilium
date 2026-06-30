@@ -154,7 +154,7 @@ jobs:
           fi
 
           for commit in "${commits[@]}"; do
-            if git cherry-pick -x "${commit}"; then
+            if git cherry-pick -x -s "${commit}"; then
               continue
             fi
 

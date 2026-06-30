@@ -105,17 +105,10 @@ workflow 会按优先级依次尝试每个 AI CLI，直到其中一个成功：
   并属于拥有 GitHub Copilot 访问权限的账号。
 - `DEEPSEEK_API_KEY`：供 `opencode run` 调用 DeepSeek 使用的 API key。
 
-创建维护分支、推送自动化分支、创建或更新 PR 需要额外配置：
-
-- `AUTOMATION_GITHUB_TOKEN`：fine-grained PAT，需要授权给
-  `spidernet-io/deployCilium`，并授予 `Contents: Read and write` 和
-  `Pull requests: Read and write` 权限。建议使用独立的自动化账号 token。
-
 创建缺失的 `cilium/vX.Y` 维护分支时，workflow 使用当前 job 的 `GITHUB_TOKEN`
 推送新分支。升级 PR 也由 `peter-evans/create-pull-request` 使用 `GITHUB_TOKEN`
-创建，目标分支是对应的 `cilium/vX.Y`。manifest PR 会先校验
-`AUTOMATION_GITHUB_TOKEN || COPILOT_GITHUB_TOKEN` 是否能访问仓库，并用它配置
-manifest 自动化分支的 push remote；PR 创建动作本身仍使用 `GITHUB_TOKEN`。
+创建，目标分支是对应的 `cilium/vX.Y`。manifest PR 同样由
+`peter-evans/create-pull-request` 使用 `GITHUB_TOKEN` 创建。
 
 注意：使用默认 `GITHUB_TOKEN` 创建的 pull request 通常不会触发新的
 `pull_request` 事件，因此 `.github/workflows/pr.yaml` 可能不会自动启动 e2e 任务。
