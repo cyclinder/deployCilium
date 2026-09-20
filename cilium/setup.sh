@@ -209,10 +209,10 @@ HELM_OPTIONS+="\
   --set preflight.image.useDigest=false \
   --set clustermesh.apiserver.image.repository=${QUAY_IMAGE_REPO}/cilium/clustermesh-apiserver \
   --set clustermesh.apiserver.image.useDigest=false \
-  --set authentication.mutual.spire.install.agent.repository=${GHCR_IMAGE_REPO}/spiffe/spire-agent \
-  --set authentication.mutual.spire.install.agent.useDigest=false \
-  --set authentication.mutual.spire.install.server.repository=${GHCR_IMAGE_REPO}/spiffe/spire-server \
-  --set authentication.mutual.spire.install.server.useDigest=false  "
+  --set authentication.mutual.spire.install.agent.image.repository=${GHCR_IMAGE_REPO}/spiffe/spire-agent \
+  --set authentication.mutual.spire.install.agent.image.useDigest=false \
+  --set authentication.mutual.spire.install.server.image.repository=${GHCR_IMAGE_REPO}/spiffe/spire-server \
+  --set authentication.mutual.spire.install.server.image.useDigest=false  "
 
 HELM_OPTIONS+="\
   --set clustermesh.apiserver.service.nodePort=${CLUSTERMESH_APISERVER_NODEPORT}  \
